@@ -1,50 +1,61 @@
 # Quantum-API
 
-Quantum-API is a RESTful API delivering **quantum computing capabilities** through an easy-to-use developer interface.  
-It leverages **PennyLane**, **Qiskit**, and **FastAPI** to enable hybrid quantum-classical ML workflows, simulations, and real hardware execution.
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
+[![Status](https://img.shields.io/badge/status-active-success)]()
 
-## 🚀 Features
-- Quantum simulation endpoints
-- Hybrid classical-quantum ML models
--  monitoring endpoint
-- API documentation at `/docs`
-- Production-ready with FastAPI + Uvicorn
+> The core accessible interface for quantum services, engineered by **opendev-labs**.
 
-## 📦 Installation
+## 🚀 Overview
+
+**Quantum-API** is a high-performance RESTful API designed to expose quantum computing capabilities to web and mobile applications. It handles job queuing, result retrieval, and system status monitoring with enterprise-grade security and scalability.
+
+## ✨ Key Features
+
+- **Job Management**: Asynchronous submission and tracking of quantum circuits and ML jobs.
+- **Scalable Architecture**: Built on top of FastAPI for high concurrency and low latency.
+- **Unified Interface**: Single point of entry for multiple quantum backends.
+- **Health Monitoring**: Real-time system status and backend availability checks.
+
+## 🛠️ Installation
+
 ```bash
-git clone https://github.com/opendev-labs/Quantum-API.git
 cd Quantum-API
-python3 -m venv qapi_env
-source qapi_env/bin/activate
 pip install -r requirements.txt
 ```
 
-## ▶️ Running the API
-```bash
-source qapi_env/bin/activate
-./start_dev.sh
-```
-API: [http://127.0.0.1:8000](http://127.0.0.1:8000)  
-Docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+## 💻 Usage
 
-## 📡 Example Requests
-**Health Check**
+Start the server:
+
 ```bash
-curl http://127.0.0.1:8000/health
+python -m app.main
 ```
 
-**Quantum Simulation**
+The API will be available at `http://localhost:8000`.
+
+### Example Request
+
 ```bash
-curl "http://127.0.0.1:8000/quantum/simulate?state=0"
+curl -X POST "http://localhost:8000/jobs" \
+     -H "Content-Type: application/json" \
+     -d '{"circuit_id": "bell_state", "shots": 1024}'
 ```
 
-## 🛠 Development Workflow
-1. Create feature branch  
-2. Test locally with `./start_dev.sh`  
-3. Push changes to GitHub
+## 📦 Docker Support
 
-## 📜 License
-This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
+```bash
+docker build -t opendev-labs/quantum-api .
+docker run -p 8000:8000 opendev-labs/quantum-api
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our contribution guidelines for more details.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-💡 Built by [opendev-labs](https://github.com/opendev-labs)
+Copyright © 2026 **opendev-labs**
