@@ -203,5 +203,35 @@ def current_backend():
 def switch_backend(name: str):
     return select_backend(name)
 
+# --- Quantum ML Routes ---
+from quantum_ml import predict as qml_predict, QuantumMLModel
+from pydantic import BaseModel
+
+class PredictionInput(BaseModel):
+    value: float
+
+@app.post("/quantum-ai/predict")
+def predict_quantum(input_data: PredictionInput):
+    """
+    Hybrid Quantum-Classical Prediction
+    """
+    try:
+        result = qml_predict(input_data.value)
+        return {"status": "success", "data": result}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+# --- System Health via VOID ---
+from void import SystemHealth
+
+@app.get("/quantum-ai/system-health")
+def system_health():
+    """
+    Check integrity of the entire Quantum System using VOID.
+    """
+    health = SystemHealth()
+    return health.check_integrity()
+
 # --- Health & other routers ---
 app.include_router(health_router)
+

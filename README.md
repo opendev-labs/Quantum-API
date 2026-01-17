@@ -12,7 +12,7 @@ It leverages **PennyLane**, **Qiskit**, and **FastAPI** to enable hybrid quantum
 
 ## 📦 Installation
 ```bash
-git clone https://github.com/subatomicERROR/Quantum-API.git
+git clone https://github.com/opendev-labs/Quantum-API.git
 cd Quantum-API
 python3 -m venv qapi_env
 source qapi_env/bin/activate
@@ -47,4 +47,4 @@ curl "http://127.0.0.1:8000/quantum/simulate?state=0"
 This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
 
 ---
-💡 Built by [subatomicERROR](https://github.com/subatomicERROR)
+💡 Built by [opendev-labs](https://github.com/opendev-labs)
